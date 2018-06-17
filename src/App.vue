@@ -9,18 +9,37 @@
       </span>
     </nav>
     <router-view/>
+    <nav class="navbar fixed-bottom bg-light">
+      Icons made by
+      <a href="http://www.freepik.com" title="Freepik">
+        Freepik
+      </a>
+      from
+      <a href="https://www.flaticon.com/" title="Flaticon">
+        www.flaticon.com
+      </a>
+      is licensed by
+      <a href="http://creativecommons.org/licenses/by/3.0/"
+         title="Creative Commons BY 3.0"
+         target="_blank">
+        CC 3.0 BY
+      </a>
+    </nav>
   </div>
 </template>
 
 <script>
-import PetsStore from '@/stores/PetsStore.js';
+import { HUNGER_INTERVAL, PetsStore } from '@/stores/PetsStore.js';
 
 export default {
   beforeDestroy() {
     clearInterval(this.hungerIntervalId);
   },
   created() {
-    this.hungerIntervalId = setInterval(PetsStore.methods.hungerTick.bind(PetsStore), 2000);
+    this.hungerIntervalId = setInterval(
+      PetsStore.methods.hungerTick.bind(PetsStore),
+      HUNGER_INTERVAL,
+    );
   },
   data() {
     return {};

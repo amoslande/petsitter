@@ -1,35 +1,58 @@
+const HUNGER_INTERVAL = 2000;
+
+const PET_TYPES = {
+  CAT: 'cat',
+  DOG: 'dog',
+  FISH: 'fish',
+  RABBIT: 'rabbit',
+};
+
 const PetsStore = {
   data: {
     pets: [
       {
-        name: 'nameA',
+        hungerRate: 10,
         image: 'https://loremflickr.com/60/60/pet?1',
+        name: 'nameA',
         status: 100,
+        type: PET_TYPES.DOG,
       },
       {
-        name: 'nameB',
+        hungerRate: 10,
         image: 'https://loremflickr.com/60/60/pet?2',
+        name: 'nameB',
         status: 100,
+        type: PET_TYPES.DOG,
       },
       {
-        name: 'nameC',
+        hungerRate: 5,
         image: 'https://loremflickr.com/60/60/pet?3',
+        name: 'nameC',
         status: 100,
+        type: PET_TYPES.CAT,
       },
       {
-        name: 'nameD',
+        hungerRate: 5,
         image: 'https://loremflickr.com/60/60/pet?4',
+        name: 'nameD',
         status: 100,
+        type: PET_TYPES.CAT,
       },
     ],
   },
   methods: {
     hungerTick() {
       this.data.pets.forEach((pet) => {
-        Object.assign(pet, { status: pet.status < 1 ? 0 : pet.status - 1 });
+        let { status } = pet;
+        status -= pet.hungerRate;
+        status = status < 0 ? 0 : status;
+        Object.assign(pet, { status });
       });
     },
   },
 };
 
-export default PetsStore;
+export {
+  HUNGER_INTERVAL,
+  PetsStore,
+};
