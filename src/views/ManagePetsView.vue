@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="pets-view-list-item" v-for="pet in pets" :key="pet.name">
+        <tr class="pets-view-list-item" v-for="pet in PetsStore.pets" :key="pet.name">
           <th scope="row" class="pets-view-list-item-img">
             <img :src="pet.image" />
           </th>
@@ -34,27 +34,13 @@
 </template>
 
 <script>
+import PetsStore from '@/stores/PetsStore.js';
+
 export default {
   name: 'ManagePetsView',
   data() {
     return {
-      pets: [
-        {
-          name: 'nameA',
-          image: 'https://loremflickr.com/60/60/pet?1',
-          status: 100,
-        },
-        {
-          name: 'nameB',
-          image: 'https://loremflickr.com/60/60/pet?2',
-          status: 100,
-        },
-        {
-          name: 'nameC',
-          image: 'https://loremflickr.com/60/60/pet?3',
-          status: 100,
-        },
-      ],
+      PetsStore: PetsStore.data,
     };
   },
 };

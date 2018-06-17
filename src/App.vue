@@ -13,11 +13,19 @@
 </template>
 
 <script>
+import PetsStore from '@/stores/PetsStore.js';
+
 export default {
-  name: 'App',
+  beforeDestroy() {
+    clearInterval(this.hungerIntervalId);
+  },
+  created() {
+    this.hungerIntervalId = setInterval(PetsStore.methods.hungerTick.bind(PetsStore), 2000);
+  },
   data() {
     return {};
   },
+  name: 'App',
 };
 </script>
 
