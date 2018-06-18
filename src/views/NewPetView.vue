@@ -6,10 +6,8 @@
 </template>
 
 <script>
-import { PetsStore } from '@/stores/PetsStore.js';
-
 export default {
-  name: 'ManagePetsView',
+  name: 'NewPetView',
   data() {
     return {
 
@@ -24,8 +22,8 @@ export default {
 </script>
 
 <style scoped>
-.pets-view-title {
-  padding: 20px 10px;
-  text-align: center;
-}
+  .pets-view-title {
+    padding: 20px 10px;
+    text-align: center;
+  }
 </style>

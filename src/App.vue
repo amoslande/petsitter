@@ -49,18 +49,18 @@ export default {
 </script>
 
 <style>
-#app {
-  color: #2c3e50;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-width: 768px;
-}
-.navbar-brand-logo {
-  height: 60px;
-  width: 60px;
-}
-.app-footer-navbar {
-  min-width: 768px;
-}
+  #app {
+    color: #2c3e50;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-width: 768px;
+  }
+  .navbar-brand-logo {
+    height: 60px;
+    width: 60px;
+  }
+  .app-footer-navbar {
+    min-width: 768px;
+  }
 </style>

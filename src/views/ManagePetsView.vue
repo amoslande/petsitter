@@ -9,36 +9,18 @@
     <div class="pets-view-table table-responsive-md">
       <table class="table table-hover">
         <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Name</th>
-          <th scope="col">Type</th>
-          <th scope="col"></th>
-        </tr>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col"><span v-show="selectedPet">Hunger</span></th>
+            <th scope="col"><span v-show="selectedPet">Type</span></th>
+          </tr>
         </thead>
         <tbody>
-        <tr class="pets-view-table-item"
-            v-for="pet in PetsStore.pets"
-            :key="pet.name"
-            @click="selectPet(pet)">
-          <th scope="row" class="pets-view-table-item-img">
-            <img :src="pet.image"/>
-          </th>
-          <td class="pets-view-table-item-text">
-            {{ pet.name }}
-          </td>
-          <td class="pets-view-table-item-img">
-            <img :src="require('@/assets/' + pet.type + '.svg')"/>
-          </td>
-          <td class="pets-view-table-item-text">
-            <div class="progress" v-show="pet === selectedPet">
-              <div class="progress-bar" role="progressbar" :style="{width: pet.status + '%'}"
-                   :aria-valuenow="pet.status" aria-valuemin="0" aria-valuemax="100">
-                {{ pet.status }}%
-              </div>
-            </div>
-          </td>
-        </tr>
+          <pet-list-item v-for="pet in PetsStore.pets" :selectHandler="selectPet"
+              :pet="pet" :key="pet.name" :selectedPet="selectedPet">
+          </pet-list-item>
         </tbody>
       </table>
     </div>
@@ -47,9 +29,11 @@
 
 <script>
 import { PetsStore } from '@/stores/PetsStore.js';
+import PetListItem from '../components/PetListItem';
 
 export default {
   name: 'ManagePetsView',
+  components: { PetListItem },
   data() {
     return {
       PetsStore: PetsStore.data,
@@ -68,30 +52,15 @@ export default {
 </script>
 
 <style scoped>
-.pets-view-title {
-  padding: 20px 10px;
-  text-align: center;
-}
-.pets-view-new-button {
-  margin: 40px;
-}
-.pets-view-table {
-  margin: 0 auto;
-  width: 700px;
-}
-.pets-view-table-item {
-  cursor: pointer;
-}
-.pets-view-table-item:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-.pets-view-table-item-img {
-  width: 60px;
-}
-.pets-view-table-item-img > img {
-  height: 60px;
-}
-.pets-view-table-item-text {
-  vertical-align: middle;
-}
+  .pets-view-title {
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .pets-view-new-button {
+    margin: 40px;
+  }
+  .pets-view-table {
+    margin: 0 auto;
+    width: 700px;
+  }
 </style>
