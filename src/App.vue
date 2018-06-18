@@ -9,7 +9,7 @@
       </span>
     </nav>
     <router-view/>
-    <nav class="navbar fixed-bottom bg-light">
+    <nav class="app-footer-navbar navbar fixed-bottom bg-light">
       Icons made by
       <a href="http://www.freepik.com" title="Freepik">
         Freepik
@@ -50,13 +50,17 @@ export default {
 
 <style>
 #app {
+  color: #2c3e50;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  min-width: 768px;
 }
 .navbar-brand-logo {
   height: 60px;
   width: 60px;
+}
+.app-footer-navbar {
+  min-width: 768px;
 }
 </style>
