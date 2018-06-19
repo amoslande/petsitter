@@ -46,6 +46,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 import { FOOD_TYPES, PetsStore } from '@/stores/PetsStore.js';
 import PetListItem from '../components/PetListItem';
 

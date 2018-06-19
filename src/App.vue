@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 import { HUNGER_INTERVAL, PetsStore } from '@/stores/PetsStore.js';
 
 export default {

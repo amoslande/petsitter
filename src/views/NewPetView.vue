@@ -53,6 +53,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line
 import { FOOD_TYPES, PetsStore, PET_TYPES } from '@/stores/PetsStore.js';
 
 export default {
