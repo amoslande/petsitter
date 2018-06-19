@@ -2,6 +2,10 @@
 
 > Outbrain FE candidate exercise Petsitter app
 
+## TODO
+* Unit tests
+* E2E tests
+
 ## Build Setup
 
 ```bash
