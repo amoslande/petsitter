@@ -18,17 +18,34 @@
           </tr>
         </thead>
         <tbody>
-          <pet-list-item v-for="pet in PetsStore.pets" :selectHandler="selectPet"
+          <pet-list-item v-for="pet in PetsStore.data.pets" :selectHandler="selectPet"
               :pet="pet" :key="pet.name" :selectedPet="selectedPet">
           </pet-list-item>
         </tbody>
       </table>
     </div>
+    <div class="form-group pets-view-food-type-form-group" v-show="selectedPet">
+      <label for="foodType">Food type:</label>
+      <select class="form-control pets-view-food-type-select"
+              id="foodType"
+              v-model="selectedFoodType">
+        <option v-for="foodType in FOOD_TYPES"
+                :key="foodType.name"
+                :value="foodType">
+          {{ foodType.name }}
+        </option>
+      </select>
+      <button type="button"
+              class="btn btn-primary"
+              @click="feedPet">
+        Feed pet
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import { PetsStore } from '@/stores/PetsStore.js';
+import { FOOD_TYPES, PetsStore } from '@/stores/PetsStore.js';
 import PetListItem from '../components/PetListItem';
 
 export default {
@@ -36,7 +53,9 @@ export default {
   components: { PetListItem },
   data() {
     return {
-      PetsStore: PetsStore.data,
+      FOOD_TYPES,
+      selectedFoodType: Object.values(FOOD_TYPES)[0],
+      PetsStore,
       selectedPet: null,
     };
   },
@@ -45,7 +64,10 @@ export default {
       this.$router.push('/new');
     },
     selectPet(pet) {
-      this.$set(this, 'selectedPet', pet);
+      this.$set(this, 'selectedPet', this.selectedPet === pet ? null : pet);
+    },
+    feedPet() {
+      this.PetsStore.methods.feedPet(this.selectedPet, this.selectedFoodType);
     },
   },
 };
@@ -56,11 +78,17 @@ export default {
     padding: 20px 10px;
     text-align: center;
   }
+  .pets-view-food-type-form-group,
   .pets-view-new-button {
     margin: 40px;
   }
   .pets-view-table {
     margin: 0 auto;
     width: 700px;
+  }
+  .pets-view-food-type-select {
+    display: inline-block;
+    margin-right: 10px;
+    width: 180px;
   }
 </style>
