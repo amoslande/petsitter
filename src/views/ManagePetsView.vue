@@ -37,8 +37,9 @@
       </select>
       <button type="button"
               class="btn btn-primary"
+              :disabled="selectedPet && selectedPet.status === 0"
               @click="feedPet">
-        Feed pet
+        Feed {{ selectedPet && selectedPet.name }}
       </button>
     </div>
   </div>
@@ -54,8 +55,8 @@ export default {
   data() {
     return {
       FOOD_TYPES,
-      selectedFoodType: Object.values(FOOD_TYPES)[0],
       PetsStore,
+      selectedFoodType: Object.values(FOOD_TYPES)[0],
       selectedPet: null,
     };
   },

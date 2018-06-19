@@ -18,7 +18,7 @@
       </div>
     </td>
     <td class="pets-view-table-item-img">
-      <img v-show="isSelected" :src="require('@/assets/' + pet.type.name + '.svg')"/>
+      <img v-show="isSelected" :src="require('@/assets/' + pet.type.name.toLowerCase() + '.svg')"/>
     </td>
   </tr>
 </template>
