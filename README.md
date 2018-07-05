@@ -1,6 +1,6 @@
 # petsitter
 
-> Outbrain FE candidate exercise Petsitter app
+> FE candidate exercise Petsitter app
 
 ## TODO
 * Unit tests
